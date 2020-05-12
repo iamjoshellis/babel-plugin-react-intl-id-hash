@@ -1,11 +1,45 @@
-# babel-plugin-react-intl-id-hash
+# babel-plugin-react-intl-message-hash 🇺🇳
 
-> react-intl `id` values as short consistent hash values, reduce translation file size!
+Generates a MD5 hash of the defaultMessage value for the translations key, meaning keys only change when the message changes. It also has the added benefit of avoid duplicate messages.
 
-This babel-plugin uses the murmur3 hash to generate short consistent message `id` values.
+I built this for a project I work on, no idea if it's helpful for anybody else. Seems like a sensible way to do it to me, but maybe I'm wrong as no ones else has built it yet, as far as I can tell 🤷‍♂️.
+
+## Install
+
+npm
+
+```
+$ npm install --save-dev babel-plugin-react-intl-message-hash
+```
+
+yarn
+
+```
+$ yarn add babel-plugin-react-intl-message-hash -D
+```
+
+## Usage
+
+.babelrc
 
 ```json
+{
+  "plugins": [
+    "react-intl-message-hash"
+  ]
+}
+```
 
+Use after `babel-plugin-react-intl-auto` for completly auto generated ids.
+
+
+```json
+{
+  "plugins": [
+    "react-intl-auto",
+    "react-intl-message-hash"
+  ]
+}
 ```
 
 ### Before
@@ -23,74 +57,15 @@ export default defineMessages({
 
 ### After
 
-With babel-plugin-react-intl-id-hash.
+With babel-plugin-react-intl-message-hash.
 
 ```js
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: {
-    id: 'GSplhw==',
+    id: 'a516b956',
     defaultMessage: 'hello {name}'
   }
 })
 ```
-
-## Install
-
-npm
-
-```
-$ npm install --save-dev babel-plugin-react-intl-id-hash
-```
-
-yarn
-
-```
-$ yarn add --dev babel-plugin-react-intl-id-hash
-```
-
-## Usage
-
-.babelrc
-
-```json
-{
-  "plugins": [
-    "react-intl-id-hash"
-  ]
-}
-```
-
-This can be used with the [babel-plugin-react-intl](https://github.com/yahoo/babel-plugin-react-intl).
-
-Another good alternative is [babel-plugin-react-intl-auto](https://github.com/akameco/babel-plugin-react-intl-auto), which **must run before** this plugin.
-
-.bablerc
-
-```json
-{
-  "plugins": [
-    ["react-intl-auto", {
-      "removePrefix": true,
-      "includeExportName": true
-    }],
-    "react-intl-id-hash"
-  ]
-}
-```
-
-### Options
-
-#### idHash
-
-The name of the hash to be used for generating id values
-
-Type: `string` <br>
-Default: `murmur3`
-
-> currently, only `murmur3` is supported
-
-## License
-
-MIT

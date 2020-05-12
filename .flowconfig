@@ -1,9 +1,0 @@
-[ignore]
-.*/example/.*
-.*/lib/.*
-
-[include]
-
-[libs]
-
-[options]
