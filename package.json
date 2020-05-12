@@ -7,7 +7,7 @@
     "precommit": "lint-staged",
     "build": "babel src -d lib",
     "lint": "eslint '**/*.js' --fix",
-    "test": "test": "test --passWithNoTests",
+    "test": "test --passWithNoTests"
   },
   "lint-staged": {
     "src/**/*.js": [
