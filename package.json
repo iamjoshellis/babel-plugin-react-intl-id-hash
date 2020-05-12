@@ -6,7 +6,8 @@
   "scripts": {
     "precommit": "lint-staged",
     "build": "babel src -d lib",
-    "lint": "eslint '**/*.js' --fix"
+    "lint": "eslint '**/*.js' --fix",
+    "test": "lol"
   },
   "lint-staged": {
     "src/**/*.js": [
