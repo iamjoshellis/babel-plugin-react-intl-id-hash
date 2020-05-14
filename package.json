@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-intl-message-hash",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react-intl id's based on a hash of defaultMessage",
   "main": "lib/index.js",
   "scripts": {
